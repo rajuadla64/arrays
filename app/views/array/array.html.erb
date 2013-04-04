@@ -1,0 +1,33 @@
+
+
+
+
+Normal User::<%= select_tag :user_rating,options_for_select([["1",1],["2",2],["3",3],["4",4],["5",5],["6",6]]),:prompt=>"Please enter Rating", :onchange =>" $.ajax({url: '../array/array',data: 'user_rating='+this.value})"%>
+<%= link_to "calculate_sum", array_rating_cal_path ,:remote=>true%>
+<div id="display">
+
+
+</div>
+<br>
+staff User::<%= select_tag :staff_rating,options_for_select([["1",1],["2",2],["3",3],["4",4],["5",5],["6",6]]),:prompt=>"Please enter Rating", :onchange =>" $.ajax({url: '../array/array_staff',data: 'staff_rating='+this.value})"%>
+<%= link_to "calculate_sum", array_rating_staff_cal_path ,:remote=>true%>
+
+
+<br>
+<br>
+<br>
+<fieldset> <legend>Rating calculation</legend>
+<%= form_tag array_rating_percent_cal_path,:remote=>true do%>
+Avg Of Normal user rating::<%= text_field_tag :result_of_normal_user%><br>
+Avg Of Staff user rating::<%= text_field_tag :result_of_staff_user%>
+      <%= button_tag :save%>
+<% end %>
+</fieldset>
+<br>
+<%= form_tag array_final_rate_path,:remote=>true do%>
+Final_Rating::<%= text_field_tag :main_result%><br>
+Final_Rating::<%= text_field_tag :main1_result%>
+    <%= button_tag :calculate_final_rating %>
+<% end %>
+                                            <br>
+final_result::<%= text_field_tag :final_result%>
